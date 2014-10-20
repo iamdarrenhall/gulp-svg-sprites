@@ -4,7 +4,7 @@ Gulp plugin for working with SVGs
 
 **Notice** See [README.old.md](https://github.com/shakyShane/gulp-svg-sprites/blob/master/README.old.md) for options/example pre `1.0.0`
 
-#Version 1.0.0
+#Version 1.0.4
 
 ## Install
 Install it locally to your project.
