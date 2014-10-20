@@ -1,5 +1,5 @@
 {#common}.{common} {
-    font-size: 10px;
+    font-size: 16px;
 }
 
 .{common}:before {
@@ -8,7 +8,7 @@
     display: inline-block;
     background-image: url("{svgPath}");
     background-repeat: no-repeat;
-    background-size: {relWidth}em {relHeight}em;
+    background-size: {relWidth}{units} {relHeight}{units};
 }
 
 .no-svg .{common}:before {
@@ -16,8 +16,8 @@
 }{/common}
 {#svg}
 .{name}:before {
-    background-position: {relPositionX}em {relPositionY}em;
-    width: {relWidth}em;
-    height: {relHeight}em;
+    background-position: {relPositionX}{units} {relPositionY}{units};
+    width: {relWidth}{units};
+    height: {relHeight}{units};
 }
 {/svg}

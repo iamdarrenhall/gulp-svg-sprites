@@ -162,7 +162,25 @@ var defaults = {
      */
     afterTransform: function (data, config) {
         return data;
-    }
+    },
+    /**
+     *
+     * Switch units from em to rem
+     *
+     * @property units
+     * @type String
+     * @default em
+     */
+    units: "em",
+    /**
+     *
+     * Specify the base unit size
+     *
+     * @property unites
+     * @type Number
+     * @default 16
+     */
+    unitsBaseSize: 16,
 };
 
 /**
@@ -210,13 +228,15 @@ function transformData(data, config) {
     data.svgPath = config.svgPath.replace("%f", config.svg.sprite);
     data.pngPath = config.pngPath.replace("%f", config.svg.sprite.replace(/\.svg$/, ".png"));
 
+    data.units = config.units;
+
     data.svg = data.svg.map(function (item) {
 
-        item.relHeight = item.height/10;
-        item.relWidth  = item.width/10;
+        item.relHeight = item.height/config.unitsBaseSize;
+        item.relWidth  = item.width/config.unitsBaseSize;
 
-        item.relPositionX = item.positionX/10 - config.padding/10;
-        item.relPositionY = item.positionY/10 - config.padding/10;
+        item.relPositionX = item.positionX/config.unitsBaseSize - config.padding/config.unitsBaseSize;
+        item.relPositionY = item.positionY/config.unitsBaseSize - config.padding/config.unitsBaseSize;
         item.normal = true;
 
         if (item.name.match(/~/g)) {
@@ -236,8 +256,8 @@ function transformData(data, config) {
 
     data.svg = data.svg.filter(function (item) { return item; });
 
-    data.relWidth  = data.swidth/10;
-    data.relHeight = data.sheight/10;
+    data.relWidth  = data.swidth/config.unitsBaseSize;
+    data.relHeight = data.sheight/config.unitsBaseSize;
 
     return data;
 }
